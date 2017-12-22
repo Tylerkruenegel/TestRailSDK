@@ -1062,7 +1062,8 @@ public class TestRailService implements Serializable {
             byte[] body = mapper.writeValueAsBytes(entity);
             request.setEntity(new ByteArrayEntity(body));
 
-            HttpResponse response = executeRequestWithRetry(request, 2);
+            //Simplified to execute(request);
+            HttpResponse response = httpClient.execute(request);
             if (response.getStatusLine().getStatusCode() != 200) {
                 Error error = JSONUtils.getMappedJsonObject(Error.class, utils.getContentsFromHttpResponse(response));
                 log.error("Response code: {}", response.getStatusLine().getStatusCode());
