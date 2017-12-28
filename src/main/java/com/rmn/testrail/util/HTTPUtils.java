@@ -232,6 +232,6 @@ public class HTTPUtils implements Serializable {
      */
     public String encodeAuthenticationBase64(String username, String password) {
         String credentials = username + ":" + password;
-        return Base64.encodeToString(credentials.getBytes(), Base64.DEFAULT).replaceAll("/n", "");
+        return Base64.encodeToString(credentials.getBytes(), Base64.DEFAULT).replaceAll("\n", "");
     }
 }
